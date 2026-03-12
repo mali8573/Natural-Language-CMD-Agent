@@ -1,3 +1,4 @@
+# Python
 __pycache__/
 *.py[oc]
 build/
@@ -5,4 +6,17 @@ dist/
 wheels/
 *.egg-info
 
-.venv
+# Virtual Environments
+.venv/
+env/
+venv/
+
+# Secrets & Config
+.env
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
