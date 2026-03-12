@@ -9,9 +9,16 @@
 ## 📊 יומן בדיקות ואימות (Validation)
 כדי להדגים את יכולות הסוכן והדיוק שלו במקרים מורכבים (כמו המרות קבצים, ניהול רשת וסינון נתונים), ריכזתי את תוצאות הבדיקות בגיליון הבא:
 
-[🔗 לצפייה ביומן הבדיקות המלא - Google Sheets]https://docs.google.com/spreadsheets/d/1OneRxV5W95cPof8IFkxGsUc5vCwZnqM9iMJkRyo98l0/edit?usp=sharing
+[🔗 לצפייה ביומן הבדיקות המלא - Google Sheets](https://docs.google.com/spreadsheets/d/1OneRxV5W95cPof8IFkxGsUc5vCwZnqM9iMJkRyo98l0/edit?usp=sharing)
 
 ## 🚀 תכונות עיקריות
-* תמיכה בשפה טבעית בעברית.
+* תמיכה מלאה בשפה טבעית (עברית ואנגלית).
 * הגנה מפני פקודות מחיקה או שינוי מערכת רגישים.
 * ממשק משתמש אינטראקטיבי מבוסס Gradio.
+
+## 🛠️ טכנולוגיות וכלים
+* **Python 3.12+** - שפת הפיתוח.
+* **Google Generative AI (Gemini API)** - מודל השפה.
+* **Gradio** - ממשק ה-Web.
+* **uv** - ניהול סביבת עבודה וחבילות.
+* **Python-dotenv** - ניהול מאובטח של הגדרות מערכת.
