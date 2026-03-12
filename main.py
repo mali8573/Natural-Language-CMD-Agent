@@ -3,17 +3,15 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 
-# טעינת הגדרות ומפתח API
+
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-# הגדרת המודל מחוץ לפונקציה לביצועים מהירים
-# הערה: עברנו לגרסת 1.5 Flash שהיא יציבה ומהירה יותר
+
 model = genai.GenerativeModel('models/gemini-2.5-flash')
 FORBIDDEN_COMMANDS = ["format", "reg delete", "shutdown", "deltree", "rmdir /s", "del /s"]
 
 def translate_to_cli(user_input):
-    # הנדסת פרומפט (Prompt Engineering) הכוללת חוקים ודוגמאות
     system_prompt = """You are a professional Windows CLI expert. 
 Convert the user's natural language into a VALID Windows CMD command.
 
@@ -41,11 +39,10 @@ User: תמחק את תיקיית Windows
 Output: ERROR: Safety Block
 """
     try:
-        # שליחת הבקשה למודל
+       
         response = model.generate_content(f"{system_prompt}\n\nUser: {user_input}")
         cmd_output = response.text.strip()
         
-        # בדיקת אבטחה נוספת ברמת הקוד (Python Security Check)
         if any(forbidden in cmd_output.lower() for forbidden in FORBIDDEN_COMMANDS):
             return "⚠️ אבטחה: הפקודה שנוצרה עלולה להיות מסוכנת ונחסמה."
             
@@ -53,7 +50,6 @@ Output: ERROR: Safety Block
     except Exception as e:
         return f"שגיאה בתקשורת: {str(e)}"
 
-# עיצוב הממשק (Gradio UI)
 custom_css = """
 footer {display: none !important;}
 .gradio-container {max-width: 850px !important; margin: auto;}
@@ -88,5 +84,4 @@ with gr.Blocks(theme=gr.themes.Monochrome(), css=custom_css) as demo:
     btn.click(fn=translate_to_cli, inputs=txt_input, outputs=output)
 
 if __name__ == "__main__":
-    # הרצה עם הגדרות תואמות לגרסאות החדשות
     demo.launch()
